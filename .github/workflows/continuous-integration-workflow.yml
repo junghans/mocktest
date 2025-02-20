@@ -8,4 +8,19 @@ jobs:
   mocktest:
     runs-on: ubuntu-latest
     steps:
-      - run: docker run --privileged --cap-add=SYS_ADMIN -t --rm fedora:latest sh -c "dnf install -y mock && mock -h"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+          with:
+            repository: rpm-software-management/mock
+            path: mock
+      - name: Build new image and Load it into Docker for testing
+        uses: docker/build-push-action@v6
+        with:
+          tags: mockenv:latest
+          file: Dockerfile
+          pull: true
+          push: false
+          load: true
+      - run: docker run --privileged --cap-add=SYS_ADMIN -t --rm mockenv:latest ${{ github.workspace }}:/mock -w /mock  sh -c "mock -h"
