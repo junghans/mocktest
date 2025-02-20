@@ -27,4 +27,4 @@ jobs:
           pull: true
           push: false
           load: true
-      - run: docker run --privileged --cap-add=SYS_ADMIN -t --rm mockenv:latest ${{ github.workspace }}:/mock -w /mock  sh -c "mock -h"
+      - run: docker run --privileged --cap-add=SYS_ADMIN -t --rm mockenv:latest sh -c "mock -h"

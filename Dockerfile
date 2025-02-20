@@ -13,3 +13,4 @@ WORKDIR /home/user/mock/mock
 RUN tito build --rpm
 USER root
 RUN dnf -y install --allow-downgrade /tmp/tito/*/mock*.rpm
+USER user
