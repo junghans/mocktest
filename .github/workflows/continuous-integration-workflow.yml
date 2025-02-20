@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches:
+      - rawhide
+  pull_request:
+    branches:
+      - rawhide
+
+concurrency:
+  group: ${ {github.event_name }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true 
+
+jobs:
+  CI:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Test Mock
+        run: |
+          docker run --privileged --cap-add=SYS_ADMIN -t --rm fedora:latest \
+            sh -c \
+              "dnf install -y mock && mock -h"
