@@ -20,6 +20,7 @@ jobs:
         with:
           tags: mockenv:latest
           file: Dockerfile
+          context: .
           pull: true
           push: false
           load: true
