@@ -1,6 +1,6 @@
 FROM registry.fedoraproject.org/fedora:rawhide
 
-RUN dnf -y install fedpkg
+RUN dnf -y install fedpkg tito
 RUN useradd -m -G mock -u 1001 user
 WORKDIR /home/user
 
