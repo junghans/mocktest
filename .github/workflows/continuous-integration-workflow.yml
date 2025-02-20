@@ -17,6 +17,7 @@ jobs:
         with:
           repository: rpm-software-management/mock
           path: mock
+          fetch-tags: true
       - name: Build new image and Load it into Docker for testing
         uses: docker/build-push-action@v6
         with:
