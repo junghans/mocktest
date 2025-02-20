@@ -11,3 +11,5 @@ WORKDIR /home/user/mock/mock-core-configs
 RUN tito build --rpm
 WORKDIR /home/user/mock/mock
 RUN tito build --rpm
+USER root
+RUN dnf -y install /tmp/tito/mock*.rpm
