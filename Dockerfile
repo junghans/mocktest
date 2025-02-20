@@ -6,7 +6,7 @@ WORKDIR /home/user
 
 COPY mock/ /home/user/mock
 RUN chown -R user:user /home/user/mock
-USER mock
+USER user
 RUN cd mock && \
   cd mock-core-configs && \
   tito build --rpm && \
