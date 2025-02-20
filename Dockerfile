@@ -8,7 +8,6 @@ COPY mock/ /home/user/mock
 RUN chown -R user:user /home/user/mock
 USER user
 WORKDIR /home/user/mock/mock-core-configs
-RUN git tag -l
 RUN tito build --rpm
-WORKDIR /home/user/mock
+WORKDIR /home/user/mock/mock
 RUN tito build --rpm
